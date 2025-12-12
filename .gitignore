@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rproj
+
+Thumbs.db
+
+/data/
+/output/
+
+/Rout/
+*.Rout
+
+Rplots.pdf
+
