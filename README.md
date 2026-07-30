@@ -16,8 +16,6 @@ contains R markdown files for creating documents; `targets/` contains target
 definitions; and `_targets.R` defines the overall workflow. The `run.R` script
 will run all analyses.
 
-Example analyses without using {targets} are shown in `example_analysis.R`.
-
 ## Data directories
 
 Use environment variables RAWDATA_DIR, RAWDATA_DIR2 and UKB_RAWDATA_DIR to set
@@ -39,3 +37,8 @@ for validation
 
 These functions and this analysis code were developed specifically for these
 analyses. They are not designed for general use.
+
+## Packages
+
+Required R packages are detailed in the `renv.lock` file using the {renv} package 
+(see <https://rstudio.github.io/renv/>).
