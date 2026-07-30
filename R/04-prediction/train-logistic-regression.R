@@ -5,5 +5,5 @@ train_logistic_regression <- function(train_data, predictors){
              family = binomial(link = "logit"),
              data = train_data)
   
-  return(reduce_model_object(fit))
+  return(fit)
 }

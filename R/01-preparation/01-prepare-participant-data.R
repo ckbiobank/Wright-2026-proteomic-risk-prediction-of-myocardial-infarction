@@ -86,13 +86,13 @@ prepare_participant_data <- function(baseline,
     rename_with( ~ gsub("_datedeveloped", "_date", .x, fixed = TRUE)) |> 
     mutate_at(vars(ends_with("_date")), as.Date) |> 
     select(csid,
-           ihd            = ihd_combined,
+           ihd            = ihd_combined,            # Ischaemic heart disease (ICD-10: I20-I25) - Death (all causes)/Health Insurance/Disease reporting/Validated and/or adjudicated
            ihd_date       = ihd_combined_date,
-           acute_mi       = acute_mi_combined,
+           acute_mi       = acute_mi_combined,       # Acute myocardial infarction (ICD-10: I21) - Death (all causes)/Health Insurance/Disease reporting/Validated and/or adjudicated
            acute_mi_date  = acute_mi_combined_date,
-           fatal_ihd      = ihd_du,
+           fatal_ihd      = ihd_du,                  # Ischaemic heart disease (ICD-10: I20-I25) - Death (underlying cause)
            fatal_ihd_date = ihd_du_date,
-           other_ihd      = other_ihd_combined,
+           other_ihd      = other_ihd_combined,      # Other ischaemic heart disease (IHD but not acute MI) - Death (all causes)/Health Insurance/Disease reporting/Validated and/or adjudicated
            other_ihd_date = other_ihd_combined_date) |> 
     mutate(acute_mi_fatal_ihd      = pmax(acute_mi, fatal_ihd),
            acute_mi_fatal_ihd_date = pmin(acute_mi_date, fatal_ihd_date))

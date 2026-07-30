@@ -40,10 +40,8 @@ calculate_nri <- function(predictions, predictions_null, participant_data){
               down = sum(down)) |>
     mutate(pr_up = up / n,
            pr_down = down / n) |>
-    mutate(nri = if_else(status == 1, pr_up - pr_down, pr_down - pr_up),
-           se = sqrt((pr_up + pr_down)/n)) |>
-    mutate(group = if_else(status == 0, "controls", "cases"),
-           value = nri) |> 
+    mutate(nri = if_else(status == 1, pr_up - pr_down, pr_down - pr_up)) |>
+    mutate(group = if_else(status == 0, "controls", "cases")) |> 
     select(group, nri, se)
   
   return(x)
