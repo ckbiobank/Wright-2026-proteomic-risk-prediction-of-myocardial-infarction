@@ -7,8 +7,7 @@ get_nri <- function(predictions, reference_predictions, participant_data, ...){
     unnest(nri) |> 
     group_by(rep, test_fold) |> 
     summarise(nri = sum(nri),
-              se = sqrt(sum(se^2)),
-              .groups = "drop") |> 
+               .groups = "drop") |> 
     group_by(rep) |> 
     summarise(se = sd(nri)/sqrt(n()),
               nri = mean(nri),
@@ -41,8 +40,7 @@ calculate_nri <- function(predictions, predictions_null, participant_data){
     mutate(pr_up = up / n,
            pr_down = down / n) |>
     mutate(nri = if_else(status == 1, pr_up - pr_down, pr_down - pr_up)) |>
-    mutate(group = if_else(status == 0, "controls", "cases")) |> 
-    select(group, nri, se)
+    mutate(group = if_else(status == 0, "controls", "cases"))
   
   return(x)
 }
